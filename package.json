@@ -1,0 +1,25 @@
+{
+  "name": "node-red-project-template",
+  "version": "0.0.1",
+  "description": "Node-RED project template",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "node-red": "^0.18.4",
+    "node-red-contrib-auth": "~0.1.7",
+    "node-red-contrib-github": "~0.1.5",
+    "node-red-contrib-http-auth0": "~0.1.22",
+    "node-red-contrib-httpauth": "~1.0.12",
+    "node-red-contrib-websocket-auth0": "~0.1.1",
+    "node-red-dashboard": "^2.8.2"
+  },
+  "scripts": {
+    "start": "node node_modules/node-red/red.js -v -u ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natcl/node-red-project-template.git"
+  },
+  "keywords": [
+    "node-red"
+  ]
+}
