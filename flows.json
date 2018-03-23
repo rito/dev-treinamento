@@ -2,16 +2,38 @@
     {
         "id": "bb97c7d7.f65f88",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "FrontEnd",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "bfaa8e08.462af",
-        "type": "tab",
-        "label": "Dashboard",
-        "disabled": false,
-        "info": ""
+        "id": "50be763a.34cd88",
+        "type": "subflow",
+        "name": "Exemplo Include",
+        "info": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "210ec0e2.f6f1b"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 440,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "210ec0e2.f6f1b",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "7e257f2a.069b5",
@@ -121,6 +143,23 @@
         "collapse": false
     },
     {
+        "id": "f0f7489d.436c08",
+        "type": "ui_group",
+        "z": "",
+        "name": "Control Panel",
+        "tab": "5dbdd37c.4d82bc",
+        "order": 2,
+        "disp": true,
+        "width": "8"
+    },
+    {
+        "id": "5dbdd37c.4d82bc",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Button Panel",
+        "icon": "dashboard"
+    },
+    {
         "id": "fe783350.8ad1d",
         "type": "http in",
         "z": "bb97c7d7.f65f88",
@@ -129,8 +168,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 140,
-        "y": 80,
+        "x": 110,
+        "y": 40,
         "wires": [
             [
                 "54bd62f0.80803c"
@@ -146,10 +185,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<html>\n    <body>\n        <img src=\"./logo.png\" />\n    </body>\n</html>",
+        "template": "<img src=\"./logos/logo.png\" />",
         "output": "str",
-        "x": 300,
-        "y": 100,
+        "x": 270,
+        "y": 40,
         "wires": [
             [
                 "cfb28688.cf4d08"
@@ -163,8 +202,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 480,
-        "y": 180,
+        "x": 410,
+        "y": 40,
         "wires": []
     },
     {
@@ -172,43 +211,168 @@
         "type": "http in",
         "z": "bb97c7d7.f65f88",
         "name": "",
-        "url": "/ui",
+        "url": "/login",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 140,
-        "y": 160,
+        "x": 80,
+        "y": 120,
         "wires": [
             [
-                "457d24a7.a1e6bc"
+                "6faf4b1c.284554"
             ]
         ]
     },
     {
-        "id": "457d24a7.a1e6bc",
+        "id": "6faf4b1c.284554",
+        "type": "template",
+        "z": "bb97c7d7.f65f88",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"pt\">\n\n<head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <!-- Tell the browser to be responsive to screen width -->\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <!-- Favicon icon -->\n    <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"images/favicon.png\">\n    <title>Webland Admin</title>\n    <!-- Bootstrap Core CSS -->\n    <link href=\"css/lib/bootstrap/bootstrap.min.css\" rel=\"stylesheet\">\n    <!-- Custom CSS -->\n    <link href=\"css/helper.css\" rel=\"stylesheet\">\n    <link href=\"css/style.css\" rel=\"stylesheet\">\n    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->\n    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->\n    <!--[if lt IE 9]>\n    <script src=\"https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n    <script src=\"https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n<![endif]-->\n</head>\n\n<body class=\"fix-header fix-sidebar\">\n    <!-- Preloader - style you can find in spinners.css -->\n    <div class=\"preloader\">\n        <svg class=\"circular\" viewBox=\"25 25 50 50\">\n\t\t\t<circle class=\"path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\" /> </svg>\n    </div>\n    <!-- Main wrapper  -->\n    <div id=\"main-wrapper\">\n\n        <div class=\"unix-login\">\n            <div class=\"container-fluid\">\n                <div class=\"row justify-content-center\">\n                    <div class=\"col-lg-4\">\n                        <div class=\"login-content card\">\n                            <div class=\"login-form\">\n                                <h4>Login</h4>\n                                <form action=\"/loginf\" method=\"post\">\n                                    <div class=\"form-group\">\n                                        <label>Email </label>\n                                        <input name=\"email\" id=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Email\">\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label>Senha</label>\n                                        <input id=\"password\" name=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Password\">\n                                    </div>\n                                    <div class=\"checkbox\">\n                                        <label>\n        \t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\"> Lembrar\n        \t\t\t\t\t\t\t\t\t</label>\n                                        <label class=\"pull-right\">\n        \t\t\t\t\t\t\t\t\t\t<a href=\"/esqueciasenha\">Esqueci a senha</a>\n        \t\t\t\t\t\t\t\t\t</label>\n\n                                    </div>\n                                    <button type=\"submit\" class=\"btn btn-primary btn-flat m-b-30 m-t-30\">Login</button>\n                                    <div class=\"register-link m-t-15 text-center\">\n                                        <p>Não possui conta? <a href=\"/registrar\"> Registrar Aqui</a></p>\n                                    </div>\n                                </form>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n<p>\n   {{{ payload.agent }}}\n</p>\n    </div>\n    <!-- End Wrapper -->\n    <!-- All Jquery -->\n    <script src=\"js/lib/jquery/jquery.min.js\"></script>\n    <!-- Bootstrap tether Core JavaScript -->\n    <script src=\"js/lib/bootstrap/js/popper.min.js\"></script>\n    <script src=\"js/lib/bootstrap/js/bootstrap.min.js\"></script>\n    <!-- slimscrollbar scrollbar JavaScript -->\n    <script src=\"js/jquery.slimscroll.js\"></script>\n    <!--Menu sidebar -->\n    <script src=\"js/sidebarmenu.js\"></script>\n    <!--stickey kit -->\n    <script src=\"js/lib/sticky-kit-master/dist/sticky-kit.min.js\"></script>\n    <!--Custom JavaScript -->\n    <script src=\"js/custom.min.js\"></script>\n\n</body>\n\n</html>",
+        "output": "str",
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "8872e3dd.966de",
+                "3afbb092.2b1b3"
+            ]
+        ]
+    },
+    {
+        "id": "8872e3dd.966de",
         "type": "http response",
         "z": "bb97c7d7.f65f88",
         "name": "",
-        "statusCode": "404",
+        "statusCode": "",
         "headers": {},
-        "x": 290,
-        "y": 200,
+        "x": 430,
+        "y": 100,
         "wires": []
     },
     {
-        "id": "f2fcae99.ad718",
-        "type": "ui_text",
-        "z": "bfaa8e08.462af",
-        "group": "4567c4a8.9afbbc",
-        "order": 0,
-        "width": 0,
-        "height": 0,
+        "id": "31879d38.32c9c2",
+        "type": "http in",
+        "z": "bb97c7d7.f65f88",
         "name": "",
-        "label": "text",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 120,
-        "y": 260,
+        "url": "/loginf",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 340,
+        "wires": [
+            [
+                "7cf067b9.0e8a38",
+                "7423001c.38913"
+            ]
+        ]
+    },
+    {
+        "id": "713857d2.bc6c68",
+        "type": "template",
+        "z": "bb97c7d7.f65f88",
+        "name": "pagina",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <body>\n        <p>\n            login: {{ payload.email }} <br/>\n            senha: {{ payload.password }}\n        </p>\n{{{ payload.agent }}}\n\n    </body>\n</html>",
+        "output": "str",
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "2d5d0516.09db1a",
+                "68d2ef35.bb8e9"
+            ]
+        ]
+    },
+    {
+        "id": "2d5d0516.09db1a",
+        "type": "http response",
+        "z": "bb97c7d7.f65f88",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 340,
         "wires": []
+    },
+    {
+        "id": "7cf067b9.0e8a38",
+        "type": "debug",
+        "z": "bb97c7d7.f65f88",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 310,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "68d2ef35.bb8e9",
+        "type": "debug",
+        "z": "bb97c7d7.f65f88",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3afbb092.2b1b3",
+        "type": "debug",
+        "z": "bb97c7d7.f65f88",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "210ec0e2.f6f1b",
+        "type": "template",
+        "z": "50be763a.34cd88",
+        "name": "verifyuseragent",
+        "field": "payload.agent",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div><h3>{{ req.headers.user-agent }}</h3>\n<p>paragrafo dentro da div</p>\n</div>\n<p><h1>paragrafo <b>fora</b> da div com H1</h1></p>",
+        "output": "str",
+        "x": 280,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7423001c.38913",
+        "type": "subflow:50be763a.34cd88",
+        "z": "bb97c7d7.f65f88",
+        "name": "Exemplo User Agent no login",
+        "x": 240,
+        "y": 220,
+        "wires": [
+            [
+                "713857d2.bc6c68"
+            ]
+        ]
     }
 ]
